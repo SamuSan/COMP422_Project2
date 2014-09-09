@@ -15,14 +15,18 @@ public class Main
             "data/digits_15_train", "data/digits_15_test",
             "data/digits_30_train", "data/digits_30_test",
             "data/digits_60_train", "data/digits_60_test" };
-
+    private static final int [] kVals = {};
     public static void main( String[] args ) throws Exception
+    {
+        doKNN();
+    }
+    private static void doKNN() throws Exception
     {
         ArrayList<Double> results = new ArrayList<Double>();
         for ( int i = 0; i < tasks.length; i += 2 )
         {
-            System.out.println( i );
             KNN knn = new KNN( tasks[i], tasks[i + 1] );
+            knn.setOptions( i );
             knn.classify();
             results.add( knn.testClassifier() );
 
@@ -31,7 +35,7 @@ public class Main
         {
             System.out.println( res );
         }
-        System.out.println( "Done" );
+        System.out.println( "KNN Done" );
     }
 
 }

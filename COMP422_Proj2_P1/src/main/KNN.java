@@ -31,6 +31,26 @@ public class KNN
 
     }
 
+    public void setOptions( int set )
+    {
+        int k = 1;
+        switch ( set )
+        {
+            case 0 :
+                break;
+            case 2 :
+                k = 3;
+                break;
+            case 4 :
+                k = 4;
+                break;
+            case 6 :
+                k = 5;
+                break;
+        }
+                nn.setKNN( k );
+    }
+
     private void createTrainingInstances( String f )
     {
         try
