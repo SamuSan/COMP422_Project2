@@ -10,7 +10,10 @@ import weka.core.neighboursearch.NearestNeighbourSearch;
 
 public class Main
 {
-    private static final String[] tasks = { "data/digits_00", "data/digits_15", "data/digits_30", "data/digits_60" };
+    private static final String[] tasks = { "data/digits_00_train", "data/digits_00_test", 
+                                            "data/digits_15_train", "data/digits_15_test", 
+                                            "data/digits_30_train", "data/digits_30_test", 
+                                            "data/digits_60_train", "data/digits_60_test" };
 
     public static void main( String[] args )
     {
