@@ -14,15 +14,24 @@ public class BackPropNeuralNet
     private Instances train = null;
     private Instances test = null;
     private MultilayerPerceptron mlp = null;
+    private String[] options = {
+            "N", "25", //Number of hidden units
+            "P ", "5", //Size of Thread pool
+            "E ", "3",//Number threads to use
+    };
 
-    public BackPropNeuralNet(String trainFile, String testFile)
+    public BackPropNeuralNet( String trainFile, String testFile )
     {
         mlp = new MultilayerPerceptron();
+
         createTrainingInstances( trainFile );
         createTestInstances( testFile );
         try
         {
+            mlp.setOptions( options );
+            mlp.listOptions();
             mlp.buildClassifier( train );
+            System.out.println( "Done building Network" );
         }
         catch ( Exception e )
         {
@@ -65,11 +74,6 @@ public class BackPropNeuralNet
         test.setClassIndex( train.numAttributes() - 1 );
     }
 
-    public void classify() throws Exception
-    {
-        mlp.buildClassifier( train );
-    }
-
     public double testClassifier()
     {
         double total = 500;
@@ -92,4 +96,5 @@ public class BackPropNeuralNet
         }
         return ( correct / total );
     }
+
 }

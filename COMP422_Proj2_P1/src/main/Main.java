@@ -20,17 +20,17 @@ public class Main
 
     public static void main( String[] args ) throws Exception
     {
-        doKNN();
+//        doKNN();
         doMLP();
     }
 
     private static void doMLP() throws Exception
     {
         ArrayList<Double> results = new ArrayList<Double>();
+        int num =1;
         for ( int i = 0; i < tasks.length; i += 2 )
         {
             BackPropNeuralNet bpNN = new BackPropNeuralNet( tasks[i], tasks[i + 1] );
-            bpNN.classify();
             results.add( bpNN.testClassifier() );
 
         }
@@ -49,7 +49,7 @@ public class Main
         {
             KNN knn = new KNN( tasks[i], tasks[i + 1] );
             knn.setOptions( i );
-            knn.classify();
+//            knn.classify();
             results.add( knn.testClassifier() );
 
         }
