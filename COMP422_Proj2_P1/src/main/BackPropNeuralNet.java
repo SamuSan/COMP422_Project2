@@ -4,51 +4,31 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import weka.classifiers.functions.MultilayerPerceptron;
 import weka.classifiers.lazy.IBk;
 import weka.core.Instance;
 import weka.core.Instances;
 
-public class KNN
+public class BackPropNeuralNet
 {
     private Instances train = null;
     private Instances test = null;
-    private IBk nn = null;
+    private MultilayerPerceptron mlp = null;
 
-    public KNN( String trainFile, String testFile )
+    public BackPropNeuralNet(String trainFile, String testFile)
     {
-        nn = new IBk();
+        mlp = new MultilayerPerceptron();
         createTrainingInstances( trainFile );
         createTestInstances( testFile );
         try
         {
-            nn.buildClassifier( train );
+            mlp.buildClassifier( train );
         }
         catch ( Exception e )
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-    }
-
-    public void setOptions( int set )
-    {
-        int k = 1;
-        switch ( set )
-        {
-            case 0 :
-                break;
-            case 2 :
-                k = 10;
-                break;
-            case 4 :
-                k = 20;
-                break;
-            case 6 :
-                k = 100;
-                break;
-        }
-                nn.setKNN( k );
     }
 
     private void createTrainingInstances( String f )
@@ -87,7 +67,7 @@ public class KNN
 
     public void classify() throws Exception
     {
-        nn.buildClassifier( train );
+        mlp.buildClassifier( train );
     }
 
     public double testClassifier()
@@ -98,7 +78,7 @@ public class KNN
         {
             for ( Instance i : test )
             {
-                double pred = nn.classifyInstance( i );
+                double pred = mlp.classifyInstance( i );
                 if ( pred == i.classValue() )
                 {
                     correct++;
