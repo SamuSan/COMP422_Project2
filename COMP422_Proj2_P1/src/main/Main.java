@@ -17,34 +17,7 @@ public class Main
 
     public static void main( String[] args )
     {
-        Instances train = null;
-        try
-        {
-            train = new Instances(
-                    new BufferedReader(
-                            new InputStreamReader(
-                                    ClassLoader.getSystemResourceAsStream( tasks[0] ) ) ) );
-            train.setClassIndex( train.numAttributes() - 1 );
-            
-
-            System.out.println( train.numAttributes() );
-            System.out.println( train.classIndex() );
-            
-            IBk nn = new IBk();
-            
-            nn.buildClassifier( train );
-        }
-        catch ( IOException e1 )
-        {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        catch ( Exception e )
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
+        KNN knn = new KNN(tasks[0], tasks[1]);
 
 
 
