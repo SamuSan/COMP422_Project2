@@ -23,11 +23,13 @@ public class Main
                                     ClassLoader.getSystemResourceAsStream( tasks[0] ) ) ) );
             train.setClassIndex( train.numAttributes() - 1 );
             
+
+            System.out.println( train.numAttributes() );
+            System.out.println( train.classIndex() );
+            
             IBk nn = new IBk();
             
             nn.buildClassifier( train );
-            System.out.println( train.numAttributes() );
-            System.out.println( train.classIndex() );
         }
         catch ( IOException e1 )
         {
