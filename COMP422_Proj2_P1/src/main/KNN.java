@@ -28,7 +28,7 @@ public class KNN
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    
+
     }
 
     private void createTrainingInstances( String f )
@@ -65,17 +65,24 @@ public class KNN
         test.setClassIndex( train.numAttributes() - 1 );
     }
 
-    private void classify() throws Exception
+    public void classify() throws Exception
     {
         nn.buildClassifier( train );
     }
-    private void testClassifier(){
+
+    public double testClassifier()
+    {
+        double total = 500;
+        double correct = 0;
         try
         {
-            for ( Instance i : test)
+            for ( Instance i : test )
             {
-            double pred  = nn.classifyInstance( i );
-            System.out.println(pred);
+                double pred = nn.classifyInstance( i );
+                if ( pred == i.classValue() )
+                {
+                    correct++;
+                }
             }
         }
         catch ( Exception e )
@@ -83,5 +90,6 @@ public class KNN
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return ( correct / total );
     }
 }
