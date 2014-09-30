@@ -1,14 +1,12 @@
 package main;
 
-import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import weka.classifiers.functions.MultilayerPerceptron;
-import weka.classifiers.lazy.IBk;
-import weka.core.Instances;
-import weka.core.neighboursearch.NearestNeighbourSearch;
+import java.util.Date;
 
 public class Main
 {
@@ -20,24 +18,30 @@ public class Main
 
     public static void main( String[] args ) throws Exception
     {
-//        doKNN();
+        //        doKNN();
         doMLP();
     }
 
     private static void doMLP() throws Exception
     {
         ArrayList<Double> results = new ArrayList<Double>();
-        int num =1;
+        String params = "";
+        int num = 1;
         for ( int i = 0; i < tasks.length; i += 2 )
         {
             BackPropNeuralNet bpNN = new BackPropNeuralNet( tasks[i], tasks[i + 1] );
             results.add( bpNN.testClassifier() );
+            if( params.length() == 0 ){
+                params = bpNN.opts();
+            }
 
+            System.out.println(params);
         }
         for ( Double res : results )
         {
             System.out.println( res );
         }
+        recordResults( results, "MLP", params );
         System.out.println( "NN Done" );
 
     }
@@ -49,7 +53,6 @@ public class Main
         {
             KNN knn = new KNN( tasks[i], tasks[i + 1] );
             knn.setOptions( i );
-//            knn.classify();
             results.add( knn.testClassifier() );
 
         }
@@ -60,4 +63,21 @@ public class Main
         System.out.println( "KNN Done" );
     }
 
+    private static void recordResults( ArrayList<Double> results, String clazzifier, String params ) throws IOException
+    {
+        DateFormat dateFormat = new SimpleDateFormat( "yyyy/MM/dd HH:mm:ss" );
+        Date date = new Date();
+        System.out.println( dateFormat.format( date ) ); //2014/08/06 15:59:48
+        FileWriter write = new FileWriter( "output.txt", true );
+        write.append( "\n" + clazzifier + "\n" );
+        write.append( "\nRun Date / Time\n" + dateFormat.format( date ) );
+        write.append( "\nPercentage \t Accuracy\n" );
+        write.append( "0% Noise \t\t" + results.get( 0 ).toString() + "\n" );
+        write.append( "15% Noise \t\t" + results.get( 1 ).toString() + "\n" );
+        write.append( "30% Noise \t\t" + results.get( 2 ).toString() + "\n" );
+        write.append( "60% Noise \t\t" + results.get( 3 ).toString() + "\n" );
+        write.append("Parameters :  \n");
+        write.append( params );
+        write.close();
+    }
 }

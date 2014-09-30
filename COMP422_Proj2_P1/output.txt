@@ -1,0 +1,72 @@
+
+MLP
+
+Run Date / Time
+2014/09/10 14:44:23
+Percentage 	 Accuracy
+0% Noise 	1.0
+Parameters :  
+Epochs : 500
+Learning rate : 0.2
+
+MLP
+
+Run Date / Time
+2014/09/10 14:46:23
+Percentage 	 Accuracy
+0% Noise 		1.0
+Parameters :  
+Epochs : 500
+Learning rate : 0.2
+
+MLP
+
+Run Date / Time
+2014/09/10 14:47:36
+Percentage 	 Accuracy
+0% Noise 		1.0
+15% Noise 	0.942
+30% Noise 	0.86
+60% Noise 	0.562
+Parameters :  
+Epochs : 
+Learning rate : 
+
+MLP
+
+Run Date / Time
+2014/09/10 14:50:25
+Percentage 	 Accuracy
+0% Noise 		1.0
+15% Noise 	0.942
+30% Noise 	0.86
+60% Noise 	0.562
+Parameters :  
+Epochs : 500
+Learning rate : 0.2
+
+MLP
+
+Run Date / Time
+2014/09/10 14:53:16
+Percentage 	 Accuracy
+0% Noise 		1.0
+15% Noise 		0.942
+30% Noise 		0.86
+60% Noise 		0.562
+Parameters :  
+Epochs : 1000
+Learning rate : 0.2
+
+MLP
+
+Run Date / Time
+2014/09/10 14:54:46
+Percentage 	 Accuracy
+0% Noise 		1.0
+15% Noise 		0.942
+30% Noise 		0.86
+60% Noise 		0.562
+Parameters :  
+Epochs : 10000
+Learning rate : 0.2
