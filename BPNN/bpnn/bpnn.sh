@@ -1,3 +1,7 @@
 #!/bin/bash
-
-./SamMinns/Applications/bpnn/nntrain img.net img.pat
+echo "Triaining"
+./nntrain XOR.net XOR.pat
+echo "Finished training"
+echo "Testing"
+./nntest XOR.net XOR.pat weights.dat
+echo "Finished Testing"
