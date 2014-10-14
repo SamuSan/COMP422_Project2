@@ -3,3 +3,5 @@
 net_pat/
 nntrain
 nntest
+.idea/
+.settings/
