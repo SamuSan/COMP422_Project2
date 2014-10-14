@@ -12,11 +12,12 @@ public class KNN
 {
     private Instances train = null;
     private Instances test = null;
-    private IBk nn = null;
+    private static IBk nn = null;
 
     public KNN( String trainFile, String testFile )
     {
         nn = new IBk();
+//        nn.setKNN(  );
         createTrainingInstances( trainFile );
         createTestInstances( testFile );
         try
@@ -31,7 +32,7 @@ public class KNN
 
     }
 
-    public void setOptions( int set )
+    public static void setOptions( int set )
     {
         int k = 1;
         switch ( set )

@@ -18,8 +18,12 @@ public class Main
 
     public static void main( String[] args ) throws Exception
     {
-        //        doKNN();
-        doMLP();
+ 
+                for ( int i = 0; i < 10; i++ )
+                {
+                    doKNN();
+                    //doMLP();
+                }
     }
 
     private static void doMLP() throws Exception

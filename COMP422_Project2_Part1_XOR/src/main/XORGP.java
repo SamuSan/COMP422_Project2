@@ -59,6 +59,8 @@ import org.jgap.gp.function.Modulo;
 import org.jgap.gp.function.Multiply;
 import org.jgap.gp.function.Multiply3;
 import org.jgap.gp.function.Not;
+
+
 import org.jgap.gp.function.Or;
 import org.jgap.gp.function.Pop;
 import org.jgap.gp.function.Pow;
@@ -1242,12 +1244,12 @@ public class XORGP extends GPProblem {
 					// get a defect
 					// rate.
 					// -------------------------------------------------------------------
-
-					if (result <= 0 && data[outputVariable][j] == 4) {
-						error++;
-					} else if (result >= 0 && data[outputVariable][j] == 2) {
-						error++;
-					}
+if(result != data[outputVariable][j]){error++;};
+//					if (result ==0  && data[outputVariable][j] == 1) {
+//						error++;
+//					} else if (result == 1 && data[outputVariable][j] == 0) {
+//						error++;
+//					}
 
 					// If the error is too high, stop evaluation and return
 					// worst error
